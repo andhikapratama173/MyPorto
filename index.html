@@ -7,12 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1a1a1a;
-      --accent-color: #0066cc;
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #2b2b2b;
-      --text-muted: #6c757d;
+      --primary-color: #ffffff;
+      --accent-color: #38bdf8;
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-color: #f8fafc;
+      --text-muted: #94a3b8;
     }
 
     * {
@@ -32,13 +33,13 @@
       line-height: 1.6;
     }
 
-    /* NAVIGATION BAR */
+    /* NAVBAR DARK */
     .navbar {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #eaeaea;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -62,7 +63,7 @@
 
     .navbar a {
       text-decoration: none;
-      color: var(--text-color);
+      color: var(--text-muted);
       font-weight: 600;
       font-size: 0.9rem;
       transition: color 0.2s;
@@ -72,9 +73,9 @@
       color: var(--accent-color);
     }
 
-    /* HERO BANNER SECTION */
+    /* HERO BANNER DARK */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('profile.jpg.jpeg') center/cover no-repeat;
+      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('profile.jpg.jpeg') center/cover no-repeat;
       min-height: 60vh;
       display: flex;
       flex-direction: column;
@@ -83,6 +84,7 @@
       text-align: center;
       color: #fff;
       padding: 2rem 1rem;
+      border-bottom: 1px solid var(--card-border);
     }
 
     .hero h1 {
@@ -91,21 +93,23 @@
       letter-spacing: 1px;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
+      color: #ffffff;
     }
 
     .hero p {
       font-size: 1.1rem;
       font-weight: 400;
       max-width: 650px;
-      opacity: 0.95;
+      color: var(--text-muted);
     }
 
     .badge-status {
       display: inline-block;
       margin-top: 1.2rem;
       padding: 0.4rem 1rem;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-color);
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -125,6 +129,7 @@
       margin-bottom: 2rem;
       position: relative;
       text-transform: uppercase;
+      color: #ffffff;
     }
 
     .section-title::after {
@@ -141,11 +146,13 @@
       background: var(--card-bg);
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       text-align: center;
       font-size: 1.05rem;
       line-height: 1.8;
       margin-bottom: 3.5rem;
+      color: #cbd5e1;
     }
 
     /* GRID LAYOUT FOR CARDS */
@@ -160,9 +167,9 @@
       background: var(--card-bg);
       padding: 1.5rem;
       border-radius: 10px;
-      border: 1px solid #eef0f2;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       text-decoration: none;
       color: inherit;
       display: block;
@@ -170,7 +177,8 @@
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      border-color: var(--accent-color);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
     }
 
     .card-header {
@@ -183,12 +191,12 @@
     .card-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--primary-color);
+      color: #ffffff;
     }
 
     .card-date {
       font-size: 0.8rem;
-      background: #eef2f7;
+      background: rgba(56, 189, 248, 0.15);
       color: var(--accent-color);
       padding: 0.2rem 0.6rem;
       border-radius: 4px;
@@ -202,13 +210,18 @@
       margin-bottom: 0.75rem;
     }
 
+    .card p {
+      color: #cbd5e1;
+    }
+
     /* FOOTER & SOCIAL LINKS */
     footer {
-      background: var(--primary-color);
-      color: #fff;
+      background: #0b1120;
+      color: var(--text-muted);
       text-align: center;
       padding: 2.5rem 1rem;
       margin-top: 2rem;
+      border-top: 1px solid var(--card-border);
     }
 
     .social-links {
@@ -219,7 +232,7 @@
     }
 
     .social-links a {
-      color: #fff;
+      color: var(--text-muted);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
@@ -357,7 +370,7 @@
         <a href="#" class="card">
           <div class="card-header">
             <div class="card-title">Manage Tool by aDhik!</div>
-            <span>↗</span>
+            <span style="color: var(--accent-color);">↗</span>
           </div>
           <div class="card-subtitle">Personal Finance Tracking</div>
           <p>Aplikasi web untuk pencatatan anggaran dan pengelolaan keuangan pribadi secara terstruktur.</p>
@@ -366,7 +379,7 @@
         <a href="#" class="card">
           <div class="card-header">
             <div class="card-title">POS & Inventory System</div>
-            <span>↗</span>
+            <span style="color: var(--accent-color);">↗</span>
           </div>
           <div class="card-subtitle">Store & Inventory Management</div>
           <p>Sistem manajemen kasir minimarket dan pencatatan inventaris stok barang.</p>
