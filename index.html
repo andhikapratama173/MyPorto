@@ -3,164 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andhika Pratama Bani Firdaus — Portfolio</title>
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Andhika Pratama - Personal Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1a1a1a;
+      --accent-color: #0066cc;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #2b2b2b;
+      --text-muted: #6c757d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* 1. TOP NAVIGATION BAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      z-index: 1000;
+    }
+
+    .navbar .brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: var(--primary-color);
+      text-transform: uppercase;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .navbar a:hover {
+      color: var(--accent-color);
+    }
+
+    /* 2. HERO SECTION FULL-WIDTH */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('profile.jpg.jpeg') center/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    .badge-status {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.4rem 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* 3. CONTAINER & SECTIONS */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent-color);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .about-text {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* 4. GRID CARDS FOR EXPERIENCE & PROJECTS */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #eef0f2;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .card-date {
+      font-size: 0.8rem;
+      background: #eef2f7;
+      color: var(--accent-color);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* 5. FOOTER & SOCIALS */
+    footer {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
+  </style>
 </head>
 <body>
 
+  <!-- NAVBAR NAVIGASI -->
+  <nav class="navbar">
+    <div class="brand">Andhika Pratama</div>
+    <ul>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#pengalaman">Pengalaman</a></li>
+      <li><a href="#prestasi">Prestasi</a></li>
+      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO BANNER TAMPILAN UTAMA -->
+  <header class="hero">
+    <h1>Andhika Pratama Bani Firdaus</h1>
+    <p>Law Student | Executive Event Lead | Organization & Legal Enthusiast</p>
+    <div class="badge-status">📍 Yogyakarta, Indonesia • Open to Projects</div>
+  </header>
+
   <main class="container">
-    <!-- Header -->
-    <header class="header">
-      <div class="header-top">
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>Open to Projects</span>
-        </div>
-        <button id="theme-toggle" class="theme-btn">🌙 Dark</button>
+    <!-- TENTANG -->
+    <section id="tentang">
+      <div class="about-text">
+        <p>Saya adalah mahasiswa Hukum Universitas Islam Indonesia yang berdedikasi pada pengembangan hukum, kepemimpinan operasional, dan manajemen organisasi. Berpengalaman memimpin tim eksekutif dalam penyelenggaraan acara besar bertingkat wilayah serta mengelola koordinasi lintas sektor dengan pendekatan logis dan terstruktur.</p>
       </div>
-
-      <!-- Foto Profil & Nama -->
-      <div class="profile-wrapper">
-        <img src="profile.jpg.jpeg" alt="Andhika Pratama Bani Firdaus" class="profile-img">
-        <div class="profile-meta">
-          <h1 class="name">Andhika Pratama Bani Firdaus</h1>
-          <p class="role">Law Student | Executive Event Lead | Organization & Legal Enthusiast</p>
-          <p class="location">📍 Yogyakarta, Indonesia</p>
-        </div>
-      </div>
-    </header>
-
-    <hr class="divider">
-
-    <!-- Bio Singkat -->
-    <section class="bio">
-      <p>
-        Saya adalah mahasiswa Hukum Universitas Islam Indonesia yang berdedikasi pada pengembangan hukum, kepemimpinan operasional, dan manajemen organisasi. Berpengalaman memimpin tim eksekutif dalam penyelenggaraan acara besar bertingkat wilayah serta mengelola koordinasi lintas sektor dengan pendekatan logis dan terstruktur. Berbekal pengalaman organisasi di BPH OSIS, Pramuka, SAKA Bhayangkara, serta pelatihan paralegal, saya berfokus pada pembentukan ekosistem kerja yang terorganisir, komunikatif, dan solutif.
-      </p>
     </section>
 
-    <!-- Pengalaman & Kepemimpinan -->
-    <section class="section">
+    <!-- PENGALAMAN & ORGANISASI -->
+    <section id="pengalaman">
       <h2 class="section-title">Pengalaman & Organisasi</h2>
-      <div class="timeline">
-        
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Ketua Pelaksana Hiking Rally 2025</span>
-            <span class="timeline-date">2025</span>
+      <div class="grid-container">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Ketua Pelaksana Hiking Rally 2025</div>
+            <span class="card-date">2025</span>
           </div>
-          <p class="timeline-org">SMAN 1 Banjar</p>
-          <p class="timeline-desc">Memimpin dan mengoordinasikan penyelenggaraan kegiatan lintas provinsi West & Central Java.</p>
+          <div class="card-subtitle">SMAN 1 Banjar</div>
+          <p>Memimpin dan mengoordinasikan penyelenggaraan kegiatan lintas provinsi West & Central Java.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Wakil Ketua Pelaksana Afesta Vol.2</span>
-            <span class="timeline-date">2024</span>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Wakil Ketua Afesta Vol.2</div>
+            <span class="card-date">2024</span>
           </div>
-          <p class="timeline-org">Acoustic Music of Smansaban Festival</p>
-          <p class="timeline-desc">Mengordinasikan operasional, manajemen acara, dan pengawasan teknis festival musik akustik.</p>
+          <div class="card-subtitle">Acoustic Music of Smansaban Festival</div>
+          <p>Mengordinasikan operasional, manajemen acara, dan pengawasan teknis festival musik akustik.</p>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Pradana Putra</span>
-            <span class="timeline-date">2024 — 2025</span>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Pradana Putra</div>
+            <span class="card-date">2024 — 2025</span>
           </div>
-          <p class="timeline-org">Dewan Ambalan Singa Jaya Patroman — SMAN 1 Banjar</p>
-          <p class="timeline-desc">Memimpin struktur kepemimpinan utama gerakan pramuka ambalan dan tata kelola program kerja kepanduan.</p>
+          <div class="card-subtitle">Dewan Ambalan Singa Jaya Patroman</div>
+          <p>Memimpin struktur kepemimpinan utama gerakan pramuka ambalan dan tata kelola program kerja kepanduan.</p>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Seksi Bidang 3 (Wawasan Kebangsaan & Bela Negara)</span>
-            <span class="timeline-date">2024</span>
-          </div>
-          <p class="timeline-org">BPH OSIS SMAN 1 Banjar</p>
-          <p class="timeline-desc">Aktif dalam manajemen kegiatan kesiswaan, pembentukan kepribadian unggul, dan kepemimpinan.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Anggota Eksekutif</span>
-            <span class="timeline-date">2024 — 2025</span>
-          </div>
-          <p class="timeline-org">Smansaban Film</p>
-          <p class="timeline-desc">Berkontribusi dalam proses produksi visual, sinematografi, dan pembuatan konten kreatif.</p>
-        </div>
-
       </div>
     </section>
 
-    <!-- Prestasi & Penghargaan -->
-    <section class="section">
-      <h2 class="section-title">Prestasi & Kompetisi</h2>
-      <div class="timeline">
-        
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Juara 3 Putra Putri Islami</span>
-            <span class="timeline-date">2025</span>
-          </div>
-          <p class="timeline-org">SMAN 1 Banjar</p>
-          <p class="timeline-desc">Penghargaan atas kemampuan komunikasi, wawasan keagamaan, dan penampilan publik unggul.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <span class="timeline-title">Finalis & Peserta Berbagai Lomba Wilayah</span>
-            <span class="timeline-date">2023 — 2025</span>
-          </div>
-          <p class="timeline-org">Tingkat Regional & Daerah</p>
-          <p class="timeline-desc">Aktif berkompetisi dalam ajang kepemimpinan, kepramukaan, dan kompetisi minat bakat siswa.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Proyek Pilihan -->
-    <section class="section">
+    <!-- PROYEK PILIHAN -->
+    <section id="proyek">
       <h2 class="section-title">Proyek Pilihan</h2>
-      <div class="project-grid">
-        <a href="#" target="_blank" rel="noopener" class="project-card">
-          <div class="project-info">
-            <span class="project-title">Manage Tool by aDhik!</span>
-            <span class="project-desc">Aplikasi C++ & Web personal finance tracking & budget logger.</span>
-          </div>
-          <span class="arrow">↗</span>
-        </a>
+      <div class="grid-container">
+        <div class="card">
+          <div class="card-title">Manage Tool by aDhik!</div>
+          <div class="card-subtitle" style="margin-top:0.5rem;">Web Personal Finance Tracking</div>
+          <p>Aplikasi web untuk pencatatan anggaran dan pengelolaan keuangan pribadi secara terstruktur.</p>
+        </div>
 
-        <a href="#" target="_blank" rel="noopener" class="project-card">
-          <div class="project-info">
-            <span class="project-title">POS & Inventory System</span>
-            <span class="project-desc">Program kasir minimarket dan pencatatan inventaris berbasis C++.</span>
-          </div>
-          <span class="arrow">↗</span>
-        </a>
+        <div class="card">
+          <div class="card-title">POS & Inventory System</div>
+          <div class="card-subtitle" style="margin-top:0.5rem;">Store & Inventory Management</div>
+          <p>Sistem manajemen kasir minimarket dan pencatatan inventaris stok barang.</p>
+        </div>
       </div>
     </section>
-
-    <!-- Kontak & Sosial Media -->
-    <section class="section">
-      <h2 class="section-title">Mari Terhubung</h2>
-      <div class="social-links">
-        <a href="mailto:pratamaandhikaa.17@gmail.com" class="social-btn">Email</a>
-        <a href="https://www.tiktok.com/@andprata_" target="_blank" rel="noopener" class="social-btn">TikTok</a>
-        <a href="https://www.instagram.com/andprataa_" target="_blank" rel="noopener" class="social-btn">Instagram</a>
-        <a href="https://www.linkedin.com/in/andhika-pratama-51a5bb391" target="_blank" rel="noopener" class="social-btn">LinkedIn</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2026 Andhika Pratama Bani Firdaus.</p>
-    </footer>
   </main>
 
-  <script src="script.js"></script>
+  <!-- FOOTER & KONTAK -->
+  <footer id="kontak">
+    <div class="social-links">
+      <a href="mailto:pratamaandhikaa.17@gmail.com">Email</a>
+      <a href="https://www.tiktok.com/@andprata_" target="_blank">TikTok</a>
+      <a href="https://www.instagram.com/andprataa_" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/andhika-pratama-51a5bb391" target="_blank">LinkedIn</a>
+    </div>
+    <p>© 2026 Andhika Pratama Bani Firdaus. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
